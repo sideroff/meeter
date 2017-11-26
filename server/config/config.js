@@ -1,5 +1,17 @@
 module.exports = {
-    development: {
-        port: 3000
+    environment: process.env.NODE_ENV || 'development',
+    port: process.env.NODE_PORT || 3000,
+    publicFolderPath: '/src/',
+    extentionToMime: {
+        '.html': 'text/html',
+        '.js': 'application/javascript',
+        '.css': 'text/css',
+        '.txt': 'text/plain',
+        '.ico': 'image/x-icon',
+        '.jpg': 'image/jpeg',
+        '.png': 'image/png',
+        '.gif': 'image/gif',
+        '.woff': 'application/font-woff',
+        '.woff2': 'application/font-woff2'
     }
 }

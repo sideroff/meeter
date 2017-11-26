@@ -1,8 +1,8 @@
 class Logger {
     constructor() { }
 
-    Log(message) {
-        console.log(message)
+    Log() {
+        console.log.apply(console, arguments)
     }
 }
 
