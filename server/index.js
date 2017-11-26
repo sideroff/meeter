@@ -24,7 +24,7 @@ function requestListener(req, res) {
         res.write(data.data)
         res.end()
     }).catch(function (error) {
-        res.writeHead(error.code || 200, { 'Content-Type': 'text/plain' })
+        res.writeHead(error.code || 500, { 'Content-Type': 'text/plain' })
         res.write('error ' + JSON.stringify(error))
         res.end()
     })
