@@ -1,5 +1,8 @@
+import React from 'react'
 import ReactDOM from 'react-dom'
 
-import App from './App'
+import App from './App.jsx'
 
-ReactDom.reander(App,document.getElementById('app'))
+window.onload = function () {
+    ReactDOM.render(<App />, document.getElementById('app'))
+}
