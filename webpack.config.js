@@ -7,7 +7,7 @@ module.exports = {
         vendors: ['react', 'react-redux', 'react-dom']
     },
     output: {
-        path: path.resolve(__dirname, 'src'),
+        path: path.resolve(__dirname, 'src/compile'),
         filename: 'app.bundle.js'
     },
     watch: true,
