@@ -1,4 +1,4 @@
-import pocReducer from './pocReducer'
+import todos from './todos'
 
 function combinedReducers(reducers) {
     return (state = {}, action = {}) => {
@@ -10,4 +10,4 @@ function combinedReducers(reducers) {
     }
 }
 
-export default combinedReducers({ pocReducer })
+export default combinedReducers({ todos })
