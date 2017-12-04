@@ -1,8 +1,18 @@
 import React from 'react'
+import { connect } from 'react-redux'
 
 import Todos from './Todos.jsx'
 
-export default class App extends React.Component {
+function mapDispatchToProps(dispatch) {
+    return {
+        AddTodo: function (id, text) {
+            console.dir(dispatch)
+            dispatch({ type: "ADD_TODO", payload: { id: id, text: text } })
+        }
+    }
+}
+
+class App extends React.Component {
     constructor() {
         super()
 
@@ -15,8 +25,10 @@ export default class App extends React.Component {
                 <button onClick={() => {
                     this.props.AddTodo(this.index++, "test")
                 }}>add todo</button>
-                <Todos todos={this.props.todos} />
+                <Todos />
             </div>
         )
     }
 }
+
+export default connect(null, mapDispatchToProps)(App)
