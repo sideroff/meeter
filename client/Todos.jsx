@@ -2,8 +2,6 @@ import React from 'react'
 import { connect } from 'react-redux'
 
 function mapStateToProps(state) {
-    console.log('mapping state')
-    console.dir(state)
     return { todos: state.todos , test: state.test}
 }
 
@@ -19,8 +17,6 @@ class Todos extends React.Component {
     }
 
     render() {
-        console.log('todos component ')
-        console.dir(this)
         if (this.props.todos && this.props.todos.length > 0) {
             return this.RenderTodos(this.props.todos)
         }
