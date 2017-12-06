@@ -2,6 +2,8 @@ import React from 'react'
 import { connect } from 'react-redux'
 
 function mapStateToProps(state) {
+    console.log('mapping state')
+    console.dir(state)
     return { todos: state.todos , test: state.test}
 }
 
