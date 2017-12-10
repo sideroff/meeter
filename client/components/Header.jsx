@@ -34,14 +34,11 @@ class Header extends React.Component {
                 <span>Hello, Guest</span>
                 <form onSubmit={this.props.Login}>
                     <input type="text" name="username" value={this.props.loginForm.username} onChange={this.props.HandleUsernameChange.bind(this)} />
-                </form>
-                <div>
                     <input type="password" name="password" value={this.props.loginForm.password} onChange={this.props.HandlePasswordChange.bind(this)} />
-                </div>
-                <div><button onClick={() => {
-                    this.props.Login()
-                }}>Login</button>
-                </div>
+                    <button onClick={() => {
+                        this.props.Login()
+                    }}>Login</button>
+                </form>
             </div>
         )
     }
