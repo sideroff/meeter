@@ -7,6 +7,8 @@ const logger = require('./utils/logger')
 
 let server = http.createServer(requestListener)
 
+let usersByToken = {}
+
 server.listen(config.port, function () {
     logger.Log('Application started in', config.environment, 'mode. Server listening on port:', config.port)
 })

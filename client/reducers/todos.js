@@ -1,8 +1,7 @@
-export default function (state = [], action) {
-    let type = action.type
+export default (state = [], action) => {
     let payload = action.payload
     let newState
-    //TODO: actions should not mutate, rather create new instances of state
+    
     switch (action.type) {
         case 'ADD_TODO':
             newState = [...state, { id: payload.id, text: payload.text }]

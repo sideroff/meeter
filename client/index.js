@@ -7,22 +7,19 @@ import ReactDOM from 'react-dom'
 import App from './App.jsx'
 import reducers from './reducers/index.js'
 
-let store
+window.onload = function () {    
+    let store = createStore(reducers)
+    console.log('initial state')
+    console.dir(store.getState())
 
-
-window.onload = function () {
-    
-    store = createStore(reducers)
     function render() {
-        console.log('rendering')
-        console.dir(store.getState())
         ReactDOM.render(
             <Provider store={store}>
                 <App/>
             </Provider>,
             document.getElementById('app'))
     }
-    store.subscribe(render)
 
+    store.subscribe(render)
     render()
 }
