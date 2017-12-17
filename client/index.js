@@ -1,21 +1,21 @@
 
-import { createStore } from 'redux'
+import { createStore, applyMiddleware } from 'redux'
 import { Provider } from 'react-redux'
 import React from 'react'
 import ReactDOM from 'react-dom'
+import logger from 'redux-logger'
 
 import App from './components/App.jsx'
 import reducers from './reducers'
 
-window.onload = function () {    
-    let store = createStore(reducers)
-    console.log('initial state')
-    console.dir(store.getState())
+window.onload = function () {
+    let middleWare = applyMiddleware(logger)
+    let store = createStore(reducers, middleWare)
 
     function render() {
         ReactDOM.render(
             <Provider store={store}>
-                <App/>
+                <App />
             </Provider>,
             document.getElementById('app'))
     }

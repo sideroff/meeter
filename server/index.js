@@ -4,6 +4,7 @@ const path = require('path')
 
 const config = require('./config/config')
 const logger = require('./utils/logger')
+const security = require('./utils/security')
 
 let server = http.createServer(requestListener)
 
@@ -15,6 +16,7 @@ server.listen(config.port, function () {
 
 function requestListener(req, res) {
     let handler
+
     if (req.method === 'POST') {
         handler = handlePostRequest
     } else {
@@ -23,18 +25,31 @@ function requestListener(req, res) {
 
     handler(req, res).then(function (data) {
         res.writeHead(200, { 'Content-Type': data.mime || 'text/plain' })
+        console.log('resolving with ' + data.data)
         res.write(data.data)
         res.end()
     }).catch(function (error) {
-        res.writeHead(error.code || 500, { 'Content-Type': 'text/plain' })
-        res.write('error ' + JSON.stringify(error))
+        res.writeHead(500, { 'Content-Type': 'text/plain' })
+        res.write(JSON.stringify(error))
         res.end()
     })
 }
 
 function handlePostRequest(req, res) {
-    return new Promise(function (resolve, reject) {
-        resolve('Handling post request')
+    return new Promise((resolve, reject) => {
+        let body = ''
+        req.on('data', data => {
+            body += data
+        })
+
+        req.on('end', () => {
+            body = JSON.parse(body)
+            security.Login(body.username, body.password).then(token => {
+                resolve({ data: JSON.stringify({ token: token, username: body.username }) })
+            }).catch(error => {
+                reject(error)
+            })
+        })
     })
 }
 function handleFileRequest(req, res) {

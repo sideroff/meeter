@@ -4,7 +4,7 @@ const webpack = require('webpack')
 module.exports = {
     entry: {
         app: './client/index.js',
-        vendors: ['react', 'react-redux', 'react-dom']
+        vendors: ['react', 'react-redux', 'react-dom', 'redux-thunk', 'redux-logger']
     },
     output: {
         path: path.resolve(__dirname, 'src/compile'),
