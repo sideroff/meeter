@@ -10,8 +10,8 @@ let server = http.createServer(requestListener)
 
 let usersByToken = {}
 
-server.listen(config.port, function () {
-    logger.Log('Application started in', config.environment, 'mode. Server listening on port:', config.port)
+server.listen(config.serverSettings.port, function () {
+    logger.Log('Application started in', config.environment, 'mode. Server listening on port:', config.serverSettings.port)
 })
 
 function requestListener(req, res) {
@@ -54,10 +54,10 @@ function handlePostRequest(req, res) {
 }
 function handleFileRequest(req, res) {
     return new Promise(function (resolve, reject) {
-        let reqPath = config.publicFolderPath + (req.url === '/' ? 'index.html' : req.url)
+        let reqPath = config.serverSettings.publicFolderPath + (req.url === '/' ? 'index.html' : req.url)
         let filePath = path.join(process.cwd(), reqPath)
         let fileExtention = path.extname(filePath)
-        let mime = config.extentionToMime[fileExtention]
+        let mime = config.serverSettings.extentionToMime[fileExtention]
         if (!mime) {
             reject(new Error('Requested file is prohibited.'))
             return
