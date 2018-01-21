@@ -33,6 +33,7 @@ module.exports = {
         host: '127.0.0.1',
         port: process.env.NODE_ESB_PORT || 9000,
         secretPhrase: process.env.NODE_ESB_SECRETPHRASE || 'super-secret-esb-password-dont-tell-anyone',
-        defaultPath: '/'
-    }
+        defaultPath: '/',
+        reconnectionAttempts: 2,
+    },
 }

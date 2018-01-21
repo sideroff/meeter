@@ -3,7 +3,7 @@ const webpack = require('webpack')
 
 module.exports = {
     entry: {
-        app: './client/index.js',
+        app: './frontend/index.js',
         vendors: ['react', 'react-redux', 'react-dom', 'redux-thunk', 'redux-logger']
     },
     output: {

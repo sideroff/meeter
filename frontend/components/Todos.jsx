@@ -1,27 +1,62 @@
 import React from 'react'
 import { connect } from 'react-redux'
 
+import Button from './Button.jsx'
+
 function mapStateToProps(state) {
-    return { todos: state.todos , test: state.test}
+    return { todos: state.todos, test: state.test }
+}
+
+function mapDispatchToProps(dispatch) {
+    return {
+        AddTodo: function (id, text) {
+            dispatch({ type: "ADD_TODO", payload: { id: id, text: text } })
+        }
+    }
 }
 
 class Todos extends React.Component {
-    RenderTodos(todos) {
-        return <ul>{this.props.todos.map((todo) => {
-            return <li key={todo.id}>{todo.text}</li>
-        })}</ul>
-    }
+    constructor() {
+        super()
 
-    RenderEmptyTodoContainer() {
-        return <div>You don't have any todos. Add some!</div>
-    }
-
-    render() {
-        if (this.props.todos && this.props.todos.length > 0) {
-            return this.RenderTodos(this.props.todos)
+        this.todoFormConfig = {
+            name: { type: 'string' },
+            description: { type: 'string' }
         }
-        return this.RenderEmptyTodoContainer()
     }
 }
+Todos(todos) {
+    return <ul>{this.props.todos.map((todo) => {
+        return <li key={todo.id}>{todo.text}</li>
+    })}</ul>
+}
 
-export default connect(mapStateToProps)(Todos)
+EmptyTodoContainer() {
+    return <div>You don't have any todos. Add some!</div>
+}
+
+AddTodo() {
+    <button onClick={() => {
+        this.props.AddTodo(this.index++, "test")
+    }}>add todo</button>
+}
+
+render() {
+    return <div>
+        <Form name={'Todos'} onSubmit={this.AddTodo} fields={this.todoFormConfig}></Form>
+    </div>
+    let jsx = []
+
+    if (this.props.todos && this.props.todos.length > 0) {
+        jsx.push(this.Todos(this.props.todos))
+    } else {
+        jsx.push(this.EmptyTodoContainer())
+    }
+
+
+    return jsx
+
+}
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Todos)

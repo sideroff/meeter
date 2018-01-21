@@ -1,6 +1,6 @@
 const defaultState = {
-    username: '',
-    password: ''
+    name: '',
+    description: ''
 }
 
 export default (state = defaultState, action = {}) => {
@@ -8,12 +8,12 @@ export default (state = defaultState, action = {}) => {
     let newState = state
 
     switch (action.type) {
-        case 'LOGIN_USERNAME_CHANGE':
-            newState = Object.assign({}, state, { username: payload })
+        case 'TODO_NAME_CHANGE':
+            newState = Object.assign({}, state, { name: payload })
             return newState
 
-        case 'LOGIN_PASSWORD_CHANGE':
-            newState = Object.assign({}, state, { password: payload })
+        case 'TODO_DESCRIPTION_CHANGE':
+            newState = Object.assign({}, state, { description: payload })
             return newState
 
         default:

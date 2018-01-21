@@ -2,12 +2,13 @@ class RequestDispatcher {
     constructor() { }
 
     request(url, params) {
-        return new Promise(resolve, reject) {
-            resolve(1)
-        }
+        return new Promise((resolve, reject) => {
+            
+        })
     }
-
 }
+
+
 
 let instance
 

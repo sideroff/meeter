@@ -1,6 +1,8 @@
 import React from 'react'
 import { connect } from 'react-redux'
 
+import RequestDispatcher from '../utils/requestDispatcher.js'
+
 function mapStateToProps(state) {
     return { currentUser: state.users.current, loginForm: state.forms.login }
 }
@@ -38,6 +40,10 @@ function mapDispatchToProps(dispatch) {
 }
 
 class Header extends React.Component {
+    constructor() {
+        super()
+    }
+
     greeting() {
         if (this.props.currentUser) {
             return <div>Hello, {this.props.currentUser.username}</div>
