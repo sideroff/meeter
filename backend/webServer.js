@@ -63,7 +63,7 @@ function handleFileRequest(req, res) {
             reject(new Error('Requested file is prohibited.'))
             return
         }
-
+        logger.Log('filepath ' + filePath)
         fs.readFile(filePath, function (error, data) {
             if (error) {
                 reject({ error: new Error('File not found'), code: 404 })
