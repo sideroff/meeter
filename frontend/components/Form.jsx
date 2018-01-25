@@ -5,10 +5,12 @@ export default class Form extends React.Component {
         super()
     }
 
+    onSubmitWrapper() {
+    }
 
     render() {
         return (
-            <div>
+            <form>
                 <div>form</div>
                 <div>
                     {this.props.fields.map((f, i) => (
@@ -18,7 +20,8 @@ export default class Form extends React.Component {
                         </div>
                     ))}
                 </div>
-            </div>
+                <input type="submit" onClick={this.props.onSubmit} />
+            </form>
         )
     }
 }

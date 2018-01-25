@@ -10,8 +10,8 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
     return {
-        AddTodo: function (id, text) {
-            dispatch({ type: "ADD_TODO", payload: { id: id, text: text } })
+        AddTodo: function (id, name, description) {
+            dispatch({ type: "ADD_TODO", payload: { id: id, name: name, description: description } })
         }
     }
 }
